@@ -11,9 +11,10 @@ function generateResume() {
     var skills = document.getElementById('skills').value;
     var experience = document.getElementById('experience').value;
     var profilePic = (_a = document.getElementById('profilePic').files) === null || _a === void 0 ? void 0 : _a[0];
+    // Base URL for the resume
+    var baseUrl = 'https://shareable-resume-builder-liard.vercel.app';
     // Generate unique URL based on username
-    var currentUrl = window.location.href.split('?')[0];
-    var uniqueUrl = "".concat(currentUrl, "?user=").concat(username);
+    var uniqueUrl = "".concat(baseUrl, "?user=").concat(username);
     // Display resume
     document.getElementById('resName').textContent = name;
     document.getElementById('resSurname').textContent = surname;

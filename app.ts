@@ -11,9 +11,11 @@ function generateResume(): void {
     const experience = (document.getElementById('experience') as HTMLTextAreaElement).value;
     const profilePic = (document.getElementById('profilePic') as HTMLInputElement).files?.[0];
   
+    // Base URL for the resume
+    const baseUrl = 'https://shareable-resume-builder-liard.vercel.app';
+    
     // Generate unique URL based on username
-    const currentUrl = window.location.href.split('?')[0];
-    const uniqueUrl = `${currentUrl}?user=${username}`;
+    const uniqueUrl = `${baseUrl}?user=${username}`;
     
     // Display resume
     (document.getElementById('resName') as HTMLSpanElement).textContent = name;
@@ -24,7 +26,7 @@ function generateResume(): void {
     (document.getElementById('resEducation') as HTMLSpanElement).textContent = education;
     (document.getElementById('resSkills') as HTMLSpanElement).textContent = skills;
     (document.getElementById('resExperience') as HTMLSpanElement).textContent = experience;
-  
+    
     // Display profile picture
     if (profilePic) {
       const reader = new FileReader();
@@ -33,13 +35,13 @@ function generateResume(): void {
       };
       reader.readAsDataURL(profilePic);
     }
-  
+    
     // Show resume container
     (document.getElementById('resumeContainer') as HTMLDivElement).style.display = 'block';
-  
+    
     // Display unique URL
     (document.getElementById('resumeUrl') as HTMLParagraphElement).textContent = uniqueUrl;
-  
+    
     // Optionally, update the URL in the address bar without reloading
     window.history.pushState({}, '', uniqueUrl);
   }
